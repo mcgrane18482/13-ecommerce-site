@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
   // find all categories
   // be sure to include its associated Products
   try {
-    const categories = await Category.findAll({ include: Product });
+    const categories = await Category.findAll({ include: [Product] });
     res.status(200).json(categories);
   } catch (err) {
     res.status(500).json(err);
@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
     const new_Category = await Category.create({
       id: req.body.id,
       category_name: req.body.category_name
-    }); res.status(200).json({ message: 'Category added successfully' });
+    }); res.status(200).json(new_Category);
   } catch (err) {
     res.status(400).json(err);
   }
