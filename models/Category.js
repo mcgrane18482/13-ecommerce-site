@@ -28,7 +28,4 @@ Category.init(
   }
 );
 
-Category.hasMany(Product);
-Product.belongsTo(Category);
-
 module.exports = Category;
